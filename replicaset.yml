@@ -1,0 +1,30 @@
+---
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: tomcat-rs
+  labels:
+    type: appserver
+    author: Sai
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      type: appserver
+  template:
+    metadata:
+      labels:
+        type: appserver
+    spec:
+      containers:
+        - name: tomcat
+          image: tomee
+          ports:
+            - containerPort: 8080
+              hostPort: 8080
+
+
+
+
+...
